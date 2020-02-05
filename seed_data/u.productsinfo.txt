@@ -1,0 +1,14 @@
+0 h_wash = bghd-e2wd.json
+1 h_dry = t9u7-4d2j.json
+2 h_dish = 58b3-559d.json
+3 h_fridge = p5st-her9.json
+4 h_fan = 2te3-nmxp.json
+5 h_furnace = i97v-e8au.json #none has most efficient criteria # done
+6 h_tstat = 7p2p-wkbf.json #already certified energy star no need to check if meets criteria
+7 h_wh = we7q-mgek.json #already certified energy star no need to check if meets criteria
+8 c_wash = 9g6r-cpdt.json  #already certified energy star no need to check if meets criteria
+9 c_dish = 9g6r-cpdt.json #already certified energy star no need to check if meets criteria
+10 c_boiler = 3393-mxju.json #already certified energy star no need to check if meets criteria
+11 c_ac = e4mh-a2u3.json 
+12 c_tstat = 7p2p-wkbf.json #already certified energy star no need to check if meets criteria
+13 r_lightbulbs = ebgj-qsf7.json #already certified energy star no need to check if meets criteria
