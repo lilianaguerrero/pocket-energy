@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="homepage-block">
+    <h1 id="homepage-title">Pocket Energy</h1>
+    </div>
+    
+        <label> What appliances or housewares are you interested in purchasing? 
+            <br>
+            <form action="/results">
+            <select name="products">
+                  <option value="washer">Washer</option>
+                  <option value="dishwasher">Dishwasher</option>
+                  <option value="boiler">Boiler</option>
+                  <option value="air_conditioner">Air Conditioner</option>
+                  <option value="thermostat">Thermostat</option>
+            </select>
+        </label>
+        <input type = "submit" value= "See Your Results">
+    </form>
+{% endblock %}

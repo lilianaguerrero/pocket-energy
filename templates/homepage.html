@@ -3,4 +3,16 @@
     <div id="homepage-block">
     <h1 id="homepage-title">Pocket Energy</h1>
     </div>
+    
+        <label> What best describes your building? 
+            <br>
+            <form action="/location">
+            <select name="building_type">
+                  <option value="renter">Renter</option>
+                  <option value="homeowner">Homeowner</option>
+                  <option value="commercial_property">Commercial Property</option>
+            </select>
+        </label>
+        <input type = "submit" value= "Next Question">
+    </form>
 {% endblock %}

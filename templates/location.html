@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="homepage-block">
+    <h1 id="homepage-title">Pocket Energy</h1>
+    </div>
+    
+        <label> Where is the property located?
+            <br>
+            <form action="/efficient-products">
+            <select name="location">
+                  <option value="Alameda">Alameda</option>
+                  <option value="Peninsula">Peninsula</option>
+                  <option value="SF">San Francisco</option>
+                  <option value="Sonoma">Sonoma</option>
+                  <option value="SV">Silicon Valley</option>
+                  <option value="SJ">San Jose</option>
+                  <option value="Other">Other PG&E Territory</option>
+            </select>
+        </label>
+        <input type = "submit" value= "Next Question">
+    </form>
+{% endblock %}
