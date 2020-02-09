@@ -2,17 +2,17 @@
 {% block content %}
     <div id="homepage-block">
     <h1 id="homepage-title">Pocket Energy</h1>
+    <h2> Custom energy efficiency options, reducing carbon footprint and maximizing return on investment. </h2>
     </div>
     
-        <label> What best describes your building? 
+        <label> Are you interested in saving $$$$ AND saving the planet? </label>
             <br>
-            <form action="/location">
-            <select name="building_type">
-                  <option value="renter">Renter</option>
-                  <option value="homeowner">Homeowner</option>
-                  <option value="commercial_property">Commercial Property</option>
+            <form method = "POST" action="/location">
+            <select name="opt">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
             </select>
-        </label>
-        <input type = "submit" value= "Next Question">
+        
+        <input type = "submit" value= "GO!">
     </form>
 {% endblock %}

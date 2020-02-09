@@ -1,5 +1,5 @@
-h_washer = bghd-e2wd.json
-h_dryer = t9u7-4d2j.json
-h_dishwasher = 58b3-559d.json
-h_refrigerator = p5st-her9.json
-h_ceiling_fan = 2te3-nmxp.json
+home = washer = bghd-e2wd.json
+home = dryer = t9u7-4d2j.json
+home = dishwasher = 58b3-559d.json
+home = refrigerator = p5st-her9.json
+home = ceiling_fan = 2te3-nmxp.json

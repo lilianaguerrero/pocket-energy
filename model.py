@@ -62,6 +62,8 @@ class Product(db.Model):
                         autoincrement = True,
                         primary_key = True)
     c_id = db.Column(db.Integer, db.ForeignKey('conservation_measures.c_id'))
+    product_category = db.Column(db.String(200),
+                            nullable = False)
     product_type = db.Column(db.String(200),
                             nullable = False)
     product_brand = db.Column(db.String(200),
@@ -86,7 +88,7 @@ class Program(db.Model):
                         primary_key = True)
     c_id = db.Column(db.Integer, db.ForeignKey('conservation_measures.c_id'))
 
-    program_type = db.Column(db.String(64),
+    prog_area = db.Column(db.String(64),
                             nullable = False)
 
     program_link = db.Column(db.String(64),
@@ -94,7 +96,7 @@ class Program(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Program Type = {self.program_type}, Link = {self.program_link}>"
+        return f"<Program Area = {self.program_area}, Link = {self.program_link}>"
 
 #####################################################################
 # Helper functions

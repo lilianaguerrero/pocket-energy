@@ -36,7 +36,7 @@ def load_products1():
     for row in file:
         
         row = row.rstrip()
-        product_type, product_route = row.split(" = ")
+        product_category, product_type, product_route = row.split(" = ")
 
         url = 'https://data.energystar.gov/resource/' + product_route
             
@@ -59,7 +59,8 @@ def load_products1():
                 product_model = top_3_products[1]
                 product_link = top_3_products[2]
 
-                product = Product(product_type = product_type,
+                product = Product(product_category = product_category,
+                            product_type = product_type,
                             product_brand = product_brand,
                             product_model = product_model,
                             product_link = product_link)
@@ -81,7 +82,7 @@ def load_products2():
     for row in file:
         
         row = row.rstrip()
-        product_type, product_route = row.split(" = ")
+        product_category, product_type, product_route = row.split(" = ")
 
         url = 'https://data.energystar.gov/resource/' + product_route
             
@@ -105,7 +106,8 @@ def load_products2():
                 product_model = top_3_products[1]
                 product_link = top_3_products[2]
 
-                product = Product(product_type = product_type,
+                product = Product(product_category = product_category,
+                            product_type = product_type,
                             product_brand = product_brand,
                             product_model = product_model,
                             product_link = product_link)
@@ -123,10 +125,10 @@ def load_programs():
 
     for row in file:
         row = row.rstrip()
-        program_type, program_link = row.split(' = ')
+        prog_area, program_link = row.split(' = ')
 
-        program = Program(program_type = program_type,
-                                        program_link = program_link)
+        program = Program(prog_area = prog_area,
+                        program_link = program_link)
         db.session.add(program)
         db.session.commit()
     db.session.commit()

@@ -4,17 +4,20 @@
     <h1 id="homepage-title">Pocket Energy</h1>
     </div>
     
-        <label> What appliances or housewares are you interested in purchasing? 
+        <label> What appliances or housewares are you interested in purchasing? </label>
             <br>
-            <form action="/results">
-            <select name="products">
-                  <option value="washer">Washer</option>
-                  <option value="dishwasher">Dishwasher</option>
-                  <option value="boiler">Boiler</option>
-                  <option value="air_conditioner">Air Conditioner</option>
-                  <option value="thermostat">Thermostat</option>
-            </select>
-        </label>
-        <input type = "submit" value= "See Your Results">
+            <form action="/results" method="post">
+              <select name="product_types">
+            
+                  <input type="checkbox" value="washer"/>Washer <br> <!-- add hover feature explaining how much energy a new washer can save you !!!!!!!!!!!!!!!-->
+                  <input type="checkbox" value="dishwasher"/>Dishwasher<br>
+                  <input type="checkbox" value="boiler"/>Boiler<br>
+                  <input type="checkbox" value="airconditioner"/>Air Conditioner<br>
+                  <input type="checkbox" value="thermostat"/>Thermostat<br>
+                  <input type="checkbox" value="none"/>None<br>
+            
+            
+        
+        <input type = "submit" value= "Continue">
     </form>
 {% endblock %}

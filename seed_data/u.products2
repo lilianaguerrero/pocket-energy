@@ -1,8 +1,8 @@
-h_furnace = i97v-e8au.json
-h_thermostat = 7p2p-wkbf.json
-c_washer = 9g6r-cpdt.json  
-c_dishwasher = 9g6r-cpdt.json 
-c_boiler = 3393-mxju.json 
-c_airconditioner = e4mh-a2u3.json 
-c_thermostat = 7p2p-wkbf.json 
-r_lightbulbs = ebgj-qsf7.json
+home = furnace = i97v-e8au.json
+home = thermostat = 7p2p-wkbf.json
+comm = washer = 9g6r-cpdt.json  
+comm = dishwasher = 9g6r-cpdt.json 
+comm = boiler = 3393-mxju.json 
+comm = airconditioner = e4mh-a2u3.json 
+comm = thermostat = 7p2p-wkbf.json 
+home = lightbulbs = ebgj-qsf7.json

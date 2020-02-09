@@ -1,7 +1,7 @@
-SF_community_choice_aggregation = https://www.cleanpowersf.org/
-PG&E_community_choice_aggregation  = https://www.mcecleanenergy.org
-sonoma_community_choice_aggregation = https://sonomacleanpower.org/
-silicon_community_choice_aggregation = https://www.svcleanenergy.org/
-san_jose_community_choice_aggregation = https://www.sanjosecleanenergy.org/
-peninsula_community_choice_aggregation = https://www.peninsulacleanenergy.com/
-east_bay_community_choice_aggregation = https://ebce.org/
+Alameda_County = https://ebce.org/
+Peninsula = https://www.peninsulacleanenergy.com/
+SF = https://www.cleanpowersf.org/
+Sonoma = https://sonomacleanpower.org/
+SV = https://www.svcleanenergy.org/
+SJ = https://www.sanjosecleanenergy.org/
+Other = https://www.mcecleanenergy.org
