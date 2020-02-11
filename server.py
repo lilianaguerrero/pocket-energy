@@ -22,35 +22,40 @@ def homepage():
 
     return render_template("homepage.html")
 
-@app.route('/location', methods=['GET','POST']) #all buildig types
+@app.route('/location') #all buildig types
 def building_location():
     """Users select location of building"""
     
-
     return render_template("location.html")
 
 
-@app.route('/building-type', methods=['GET','POST'])
+@app.route('/building-type')
 def building_type():
     """Allows users to select building type"""
-    location = request.form.get('location')
+    global location
 
+    location = request.args.get('location')
+    session['location'] = location
+    
     return render_template("building.html")
 
 
-@app.route('/redirect1', methods=['GET','POST']) #only homeowners & commercial post request and then redirect to appropriate route
+@app.route('/redirect1') #only homeowners & commercial post request and then redirect to appropriate route
 def redirect1():
     """Users select location of building"""
-#if building_type = homeowner or building_type = commercial_property
-    building_type = request.form.get('building_type')
-    
+    global building_type
 
+
+    building_type = request.args.get('building_type')
+    session['building_type'] = building_type
+    
+    print(session)
     if building_type == 'renter':
         return redirect(url_for('home_efficient_products'))
     return render_template("solar-options.html")
     
 
-@app.route('/redirect2', methods=['GET','POST']) #only homeowners & commercial post request and then redirect to appropriate route
+@app.route('/redirect2') #only homeowners & commercial post request and then redirect to appropriate route
 def redirect2():
     """Users select location of building"""
 #if building_type = homeowner or building_type = commercial_property
@@ -60,40 +65,42 @@ def redirect2():
         return redirect(url_for('home_efficient_products'))
     return redirect(url_for('commercial-efficient-products'))
 
-@app.route('/home-efficient-products', methods=['GET','POST']) #only homes & renters
+@app.route('/home-efficient-products') #only homes & renters
 def home_efficient_products():
     """Users select what appliances and products they are interested in purchasing"""
     
     return render_template("home-products.html")
 
-@app.route('/commercial-efficient-products', methods=['GET','POST']) #only commercial buildings
+@app.route('/commercial-efficient-products') #only commercial buildings
 def commercial_efficient_products():
     """Users select what appliances and products they are interested in purchasing"""
     
     return render_template("commercial-products.html")
 
 
-@app.route('/results', methods=['GET','POST'])
+@app.route('/results')
 def results():
     """Presents summary and comments on cost payback/ carbon payback how to
     proceed with suggested products"""
-    
+    global product_types
+
+
+    product_types = request.args.get('product_types')
+    session['product_types'] = product_types
     #look into data migration to add collumns, not needing to dropdb for every edits
     #index the location for efficient runtime
     #USE SESSION FOR COLLECTING INFORMATION!!!!!!!!!
     #START WITH DISPLAYING PRODUCT TYPES
     # location
     # solar_option
-    product_types = request.form.get('product_types')
-    print(product_types)
+    
+    print(session)
 
 
-    # if building_type == 'renter' or building_type = 'homeowner': 
-    #     for XXX in product_types:
-    #     home_product = Product.query.with_entities(Product.product_category)
-
+    if product_types == 'washer': ##ask them how to append more than one item to a list
+        home_product = Product.query.filter_by(product_type=product_types).first()
     return render_template("results.html",
-                            product_types=product_types)
+                            home_product = home_product)
 
 
 

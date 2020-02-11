@@ -6,19 +6,17 @@
     
         <label> What appliances or housewares are you interested in purchasing? </label>
             <br>
-            <form action="/results" method = "post">
-              <select name="product_types">
-                  <input type="checkbox" value="washer"/>Washer<br><!-- add hover feature explaining how much energy a new washer can save you !!!!!!!!!!!!!!!-->
-                  <input type="checkbox" value="dryer"/>Dryer<br>
-                  <input type="checkbox" value="dishwasher"/>Dishwasher<br>
-                  <input type="checkbox" value="refrigerator"/>Refrigerator<br>
-                  <input type="checkbox" value="ceiling_fan"/>Ceiling Fan<br>
-                  <input type="checkbox" value="furnace"/>Furnace<br>
-                  <input type="checkbox" value="thermostat"/>Thermostat<br>
-                  <input type="checkbox" value="lightbulbs"/>Lightbulbs<br>
-            
+            <form action="/results" >
+                  <input type="checkbox" name="product_types" value="washer"/>Washer<br><!-- add hover feature explaining how much energy a new washer can save you !!!!!!!!!!!!!!!-->
+                  <input type="checkbox" name="product_types" value="dryer"/>Dryer<br>
+                  <input type="checkbox" name="product_types" value="dishwasher"/>Dishwasher<br>
+                  <input type="checkbox" name="product_types" value="refrigerator"/>Refrigerator<br>
+                  <input type="checkbox" name="product_types" value="ceiling_fan"/>Ceiling Fan<br>
+                  <input type="checkbox" name="product_types" value="furnace"/>Furnace<br>
+                  <input type="checkbox" name="product_types" value="thermostat"/>Thermostat<br>
+                  <input type="checkbox" name="product_types" value="lightbulbs"/>Lightbulbs<br>
         
-            <input type = "submit" value= "Next Question">
+            <input type = "submit" value= "Continue">
           </form>
     
 {% endblock %}
