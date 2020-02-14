@@ -32,19 +32,17 @@ def building_location():
 @app.route('/building-type')
 def building_type():
     """Allows users to select building type"""
-    global location
-
+    
     location = request.args.get('location')
     session['location'] = location
-    
+    print(session)
     return render_template("building.html")
 
 
 @app.route('/redirect1') #only homeowners & commercial post request and then redirect to appropriate route
 def redirect1():
     """Users select location of building"""
-    global building_type
-
+    
 
     building_type = request.args.get('building_type')
     session['building_type'] = building_type
@@ -59,11 +57,14 @@ def redirect1():
 def redirect2():
     """Users select location of building"""
 #if building_type = homeowner or building_type = commercial_property
-    solar_option = request.form.get('solar_type')
+    
+    solar_type = request.args.get('solar_type')
+    session['solar_type'] = solar_type
+    print(session)
 
     if building_type == 'homeowner': #need to grab info from "redirect"
         return redirect(url_for('home_efficient_products'))
-    return redirect(url_for('commercial-efficient-products'))
+    return redirect(url_for('commercial_efficient_products'))
 
 @app.route('/home-efficient-products') #only homes & renters
 def home_efficient_products():
@@ -82,26 +83,61 @@ def commercial_efficient_products():
 def results():
     """Presents summary and comments on cost payback/ carbon payback how to
     proceed with suggested products"""
-    global product_types
+
+    """ location / program info is pulled from the session here"""   
+
+    prog_area = session['location']
+    cca = Program.query.filter_by(prog_area=prog_area).first()
+
+    """solar options are pulled from session here """
+
+    solar_type = session['solar_type'] 
+    solar = SolarIncentive.query.filter_by(solar_type=str(solar_type)).first()
+
+  
 
 
-    product_types = request.args.get('product_types')
-    session['product_types'] = product_types
-    #look into data migration to add collumns, not needing to dropdb for every edits
-    #index the location for efficient runtime
-    #USE SESSION FOR COLLECTING INFORMATION!!!!!!!!!
-    #START WITH DISPLAYING PRODUCT TYPES
-    # location
-    # solar_option
+    """product data is loaded below here"""
+    washer = request.args.get('washer')
+    dryer = request.args.get('dryer')
+    dishwasher = request.args.get('dishwasher')
+    refrigerator = request.args.get('refrigerator')
+    ceiling_fan = request.args.get('ceiling_fan')
+    furnace = request.args.get('furnace')
+    thermostat = request.args.get('thermostat')
+    lightulbs = request.args.get('lightulbs')
+    boiler = request.args.get('boiler')
+    airconditioner = request.args.get('lightulbs')
+
+    """only display info about products listed in session"""
+    session_prods = []
+    home_product_list = [washer, dryer, dishwasher, refrigerator, ceiling_fan, 
+                    furnace, thermostat, lightulbs]
+
+    comm_product_list = [washer, boiler, dishwasher, airconditioner, thermostat]
+
+    if session['building_type'] == 'homeowner' or session['building_type'] == 'renter':
+        for product in home_product_list:
+            if product != None:
+                session[product] = str(product)
+                prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='home').first()
+                session_prods.append(prod)
+                print(session_prods)
+                
+    else:
+        for product in comm_product_list:
+            if product != None:
+                session[product] = str(product)
+                prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='comm').first()
+                session_prods.append(prod)
+                print(session_prods)
+
     
-    print(session)
-
-
-    if product_types == 'washer': ##ask them how to append more than one item to a list
-        home_product = Product.query.filter_by(product_type=product_types).first()
     return render_template("results.html",
-                            home_product = home_product)
-
+                            cca=cca,
+                            solar=solar,
+                            session_prods=session_prods)
+    
 
 
 if __name__ == "__main__":

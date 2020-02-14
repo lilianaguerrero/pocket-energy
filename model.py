@@ -50,7 +50,7 @@ class SolarIncentive(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Solar Type = {self.solar_type}, Rebates Available = {self.solar_type}>"
+        return f"<Solar Type = {self.solar_type}, Rebates Available = {self.rebate_link}>"
 
 
 class Product(db.Model):
@@ -96,7 +96,7 @@ class Program(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Program Area = {self.program_area}, Link = {self.program_link}>"
+        return f"<Program Area = {self.prog_area}, Link = {self.program_link}>"
 
 #####################################################################
 # Helper functions

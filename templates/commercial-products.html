@@ -7,17 +7,12 @@
         <label> What appliances or housewares are you interested in purchasing? </label>
             <br>
             <form action="/results">
-              
+                <input type="checkbox" value="washer"/>Washer <br> <!-- add hover feature explaining how much energy a new washer can save you !!!!!!!!!!!!!!!-->
+                <input type="checkbox" name="dishwasher" value="dishwasher"/>Dishwasher<br>
+                <input type="checkbox" name="boiler" value="boiler"/>Boiler<br>
+                <input type="checkbox" name="airconditioner" value="airconditioner"/>Air Conditioner<br>
+                <input type="checkbox" name="thermostat" value="thermostat"/>Thermostat<br>
             
-                  <input type="checkbox" value="washer"/>Washer <br> <!-- add hover feature explaining how much energy a new washer can save you !!!!!!!!!!!!!!!-->
-                  <input type="checkbox" name="product_types" value="dishwasher"/>Dishwasher<br>
-                  <input type="checkbox" name="product_types" value="boiler"/>Boiler<br>
-                  <input type="checkbox" name="product_types" value="airconditioner"/>Air Conditioner<br>
-                  <input type="checkbox" name="product_types" value="thermostat"/>Thermostat<br>
-                  <input type="checkbox" name="product_types" value="none"/>None<br>
-            
-            
-        
-        <input type = "submit" value= "Continue">
-    </form>
+            <input type = "submit" value= "Continue">
+            </form>
 {% endblock %}
