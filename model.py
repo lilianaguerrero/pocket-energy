@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy #imports SQLAlchemy
 
 from collections import defaultdict
 
+
 # This is the connection to the PostgreSQL database; we're getting
 # this through the Flask-SQLAlchemy helper library. On this, we can
 # find the `session` object, where we do most of our interactions
@@ -50,7 +51,7 @@ class SolarIncentive(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Solar Type = {self.solar_type}, Rebates Available = {self.rebate_link}>"
+        return f"Solar Type = {self.solar_type}, More Info On Available Rebates= {self.rebate_link}"
 
 
 class Product(db.Model):
@@ -76,7 +77,7 @@ class Product(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Product Type = {self.product_type}, Brand = {self.product_brand}, Model = {self.product_model}, Link = {self.product_link}>"
+        return f"Product Type = {self.product_type}, Brand = {self.product_brand}, Model = {self.product_model}, More Info = {self.product_link}"
 
 class Program(db.Model):
     """General Efficiency programs,for homeowners, commercial, and renters"""
@@ -96,7 +97,7 @@ class Program(db.Model):
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"<Program Area = {self.prog_area}, Link = {self.program_link}>"
+        return f"Program Region = {self.prog_area}, More Info on Available Programs= {self.program_link}"
 
 #####################################################################
 # Helper functions

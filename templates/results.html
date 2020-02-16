@@ -3,16 +3,18 @@
     <div id="homepage-block">
     <h1 id="homepage-title">Pocket Energy</h1>
     </div>
-    
-        <label> 
+            <label> 
             Here are your Energy Saving Recommendations! 
             <br>
         </label>
         Community choice aggregate programs: {{cca}} 
         <br>
         Solar Power Options: {{solar}}
+
         <br>
         Product Options: {{ session_prods }}
+        {{% loop }}
+            {{product.}}
     <div>
         
     </div>

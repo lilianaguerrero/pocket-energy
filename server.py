@@ -86,13 +86,14 @@ def results():
 
     """ location / program info is pulled from the session here"""   
 
-    prog_area = session['location']
-    cca = Program.query.filter_by(prog_area=prog_area).first()
+    
+    cca = Program.query.filter_by(prog_area=session['location']).first()
 
     """solar options are pulled from session here """
-
-    solar_type = session['solar_type'] 
-    solar = SolarIncentive.query.filter_by(solar_type=str(solar_type)).first()
+    if session['building_type'] == 'homeowner' or session['building_type'] == 'commercial_property':
+        solar = SolarIncentive.query.filter_by(solar_type=session['solar_type']).first()
+    else:
+        solar = None
 
   
 
@@ -132,12 +133,17 @@ def results():
                 session_prods.append(prod)
                 print(session_prods)
 
-    
+    print(session_prods[0].product_link)
     return render_template("results.html",
                             cca=cca,
                             solar=solar,
                             session_prods=session_prods)
     
+
+@app.route("/results-js")
+def show_results_js():
+    return render_template("results-JS.html")
+
 
 
 if __name__ == "__main__":
