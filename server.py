@@ -142,16 +142,13 @@ def results():
 
 
 @app.route("/homepage")
-def homepage_js():
+def homepageJS():
     return render_template("homepage-JS.html")
 
-@app.route("/tracking")
-def tracking_js():
-    return render_template("homepage-JS.html")    
+@app.route("/App")
+def PocketEnergy():
+    return render_template("App.html")
 
-@app.route("/results-js")
-def show_results_js():
-    return render_template("results-JS.html")
 
 
 

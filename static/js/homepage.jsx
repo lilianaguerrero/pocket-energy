@@ -1,3 +1,5 @@
+
+
 class Homepage extends React.Component {
   render(){
     return (
@@ -6,7 +8,7 @@ class Homepage extends React.Component {
 
         <p>This application provides custom energy efficiency options, reducing carbon footprint and maximizing return on investment.</p>
         
-        <a href="/Tracking">
+        <a href="/Location">
           Are you interested in saving $$$$ AND saving the planet ?
         </a>
 
@@ -16,4 +18,4 @@ class Homepage extends React.Component {
   }
 }
 
-ReactDOM.render(<Homepage />, document.getElementById('homepage'));
+ReactDOM.render(<Homepage />, document.getElementById("app"));

@@ -1,17 +1,31 @@
 
-import Header from "./Header"
-import HomePage from "./Homepage"
-import Result from "./Result"
-
 class App extends React.Component {
-    constructor() {
-            <div>
-                <Header />
-                <HomePage />
-                <Result />
-            </div>
+    constructor(){
+        super();
     }
+    
+    
+    render(){
+        return( 
+           
+                <div>
+                    Hello
+                
+
+                <Loc />
+                </div>
+        );
+    }    
 }
 
+// class Tracking extends React.Component{
+//     constructor(props) {
+//         super(props)
+//         this.state = {location: undefined,
+//                         building_type: undefined,
+//                         solar_type: undefined,
+//                         products: undefined}
+//     }
+// }
 
-ReactDOM.render(<App />, document.getElementById('container'));
+ReactDOM.render(<App />, document.getElementById("app"));
