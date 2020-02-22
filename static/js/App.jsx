@@ -13,6 +13,9 @@ class App extends React.Component {
                 
 
                 <Loc />
+                <Building />
+                <Solar />
+                <HomeProds />
                 </div>
         );
     }    
