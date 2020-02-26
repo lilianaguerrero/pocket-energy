@@ -1,6 +1,17 @@
 class Building extends React.Component {
-  constructor(){
-        super();
+  constructor(props){
+        super(props)
+        this.state = {building: ''}
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value})
+  }
+
+  handleSubmit(event) {
+    this.setState({ value: event.target.value})
   }
 
   render(){
@@ -8,11 +19,12 @@ class Building extends React.Component {
       <div>
         What best describes your building? 
             <form>
-              <select name="building_type">
+              <select value={this.state.building} onChange={this.handleChange}>
                     <option value="renter">Renter</option>
                     <option value="homeowner">Homeowner</option>
                     <option value="commercial_property">Commercial Property</option>
               </select>
+              <input type="submit" value="Submit" />
             </form>
       </div>
     );

@@ -74,10 +74,13 @@ class Product(db.Model):
 
     product_link = db.Column(db.String(200),
                             nullable = True)
+
+    product_img = db.Column(db.String(200),
+                            nullable = True)
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"Product Type = {self.product_type}, Brand = {self.product_brand}, Model = {self.product_model}, More Info = {self.product_link}"
+        return f"Product Type = {self.product_type}, Brand = {self.product_brand}, Model = {self.product_model}, More Info = {self.product_link}, Pic = {self.product_img} "
 
 class Program(db.Model):
     """General Efficiency programs,for homeowners, commercial, and renters"""

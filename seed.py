@@ -118,6 +118,10 @@ def load_products2():
             index += 1
 
     db.session.commit()
+
+def load_prod_img():
+    
+
             
 def load_programs():
     print('Utility Green Energy Programs')

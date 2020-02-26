@@ -9,13 +9,12 @@ class App extends React.Component {
         return( 
            
                 <div>
-                    Hello
-                
-
                 <Loc />
                 <Building />
                 <Solar />
                 <HomeProds />
+                <CommProds />
+                <Result />
                 </div>
         );
     }    
