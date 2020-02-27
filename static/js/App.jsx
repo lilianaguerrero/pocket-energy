@@ -14,7 +14,6 @@ class App extends React.Component {
                 <Solar />
                 <HomeProds />
                 <CommProds />
-                <Result />
                 </div>
         );
     }    

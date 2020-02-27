@@ -10,21 +10,26 @@ class HomeProds extends React.Component {
           furnace: false,
           thermostat: false,
           lightbulbs: false,
+          submit: false
         };
 
         this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  // handleSelectingAppliances(event) {
-  //   const target = event.target;
-  //   const value = target.value
-  //   console.log(value)
-  //   this.state.appliances.push(value);
-  // }
 
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    }, () => { console.log(this.state)});
+  }
+
+  handleSubmit(event) {
+    const target = event.target;
+    const value = target.type === 'submit' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({

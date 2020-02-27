@@ -1,31 +1,59 @@
 class Building extends React.Component {
   constructor(props){
         super(props)
-        this.state = {building: ''}
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.state = {
+          renter: false,
+          homeowner: false,
+          commercial_property: false
+        }
+        this.handleInputChange = this.handleInputChange.bind(this)
+        
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value})
-  }
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'radio' ? target.checked : target.value;
+    const name = target.name;
 
-  handleSubmit(event) {
-    this.setState({ value: event.target.value})
+    this.setState({
+      [name]: value
+    }, () => { console.log(this.state)});
   }
 
   render(){
+    if (this.state.renter || this.state.homeowner || this.state.commercial_property) {
+      return <div></div>
+    }
     return (
       <div>
-        What best describes your building? 
-            <form>
-              <select value={this.state.building} onChange={this.handleChange}>
-                    <option value="renter">Renter</option>
-                    <option value="homeowner">Homeowner</option>
-                    <option value="commercial_property">Commercial Property</option>
-              </select>
-              <input type="submit" value="Submit" />
-            </form>
+        What best describes your building?
+          <br />
+            <label>
+            A rental home / apartment 
+              <input
+                name="renter"
+                type="radio"
+                checked={this.state.renter}
+                onChange={this.handleInputChange} />
+            </label>
+            <br />
+            <label>
+              A purchased home
+              <input
+                name="homeowner"
+                type="radio"
+                value={this.state.homeowner}
+                onChange={this.handleInputChange} />
+            </label>
+            <br />
+            <label>
+              A commercial property
+              <input
+                name="commercial_property"
+                type="radio"
+                value={this.state.commercial_property}
+                onChange={this.handleInputChange} />
+            </label>
       </div>
     );
   }

@@ -12,3 +12,4 @@ class Result extends React.Component {
 }
 
 
+ReactDOM.render(<Result />, document.getElementById("result"));

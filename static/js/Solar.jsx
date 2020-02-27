@@ -1,31 +1,68 @@
 class Solar extends React.Component {
   constructor(props){
         super(props)
-        this.state = {solar: ''}
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.state = {
+          solar_water_heating: false,
+          solar_panels: false,
+          c_solar_panels: false,
+          none: false}
+
+        this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value})
-  }
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'radio' ? target.checked : target.value;
+    const name = target.name;
 
-  handleSubmit(event) {
-    this.setState({ value: event.target.value})
+    this.setState({
+      [name]: value
+    }, () => { console.log(this.state)});
   }
 
   render(){
+    if (this.state.solar_water_heating || this.state.solar_panels || this.state.c_solar_panels || this.state.none) {
+      return <div></div>
+    }
     return (
       <div>
         Do you have free roof area? And Do one of the following apply to you?
-          <form>
-            <select value={this.state.solar} onChange={this.handleChange}>
-                  <option value="solar_water_heating"> The priority is to save $$ on your water heating & do you use Natural Gas?</option>
-                  <option value="solar_panels">The priority to save $$ on your electricity bill & do you have free roof space?</option>
-                  <option value="c_solar_panels">You are a multi-family property owner or tenant?</option>
-            </select>
-            <input type="submit" value="Submit" />
-          </form>
+          <br />
+            <label>
+            The priority is to save $$ on your water heating & do you use Natural Gas?
+              <input
+                name="solar_water_heating"
+                type="radio"
+                checked={this.state.solar_water_heating}
+                onChange={this.handleInputChange} />
+            </label>
+            <br />
+            <label>
+              The priority to save $$ on your electricity bill & do you have free roof space?
+              <input
+                name="solar_panels"
+                type="radio"
+                value={this.state.solar_panels}
+                onChange={this.handleInputChange} />
+            </label>
+            <br />
+            <label>
+              You are a multi-family property owner or tenant?
+              <input
+                name="c_solar_panels"
+                type="radio"
+                value={this.state.c_solar_panels}
+                onChange={this.handleInputChange} />
+            </label>
+            <br />
+            <label>
+              None
+              <input
+                name="none"
+                type="radio"
+                value={this.state.none}
+                onChange={this.handleInputChange} />
+            </label>
       </div>
     );
   }

@@ -104,7 +104,7 @@ class Loc extends React.Component {
                 onChange={this.handleInputChange} />
             </label>
             <br />
-        <input type="submit" value="Submit" />
+        
 
       </div>
     );
