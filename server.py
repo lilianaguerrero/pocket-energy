@@ -2,12 +2,13 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session, url_for
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_cors import CORS
 
 from model import connect_to_db, db, Measure, SolarIncentive, Product, Program
 
 
 app = Flask(__name__)
-
+CORS(app)
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "SHHHH"
 
@@ -149,8 +150,10 @@ def homepageJS():
 def PocketEnergy():
     return render_template("App.html")
 
-@app.route("/results-js")
+@app.route("/results-js", methods = ['POST'])
 def resultsJS():
+    product = request.json
+    print(product)
     return render_template("results-JS.html")
 
 

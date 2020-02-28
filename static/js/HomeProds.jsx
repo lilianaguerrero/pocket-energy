@@ -9,8 +9,7 @@ class HomeProds extends React.Component {
           fan: false,
           furnace: false,
           thermostat: false,
-          lightbulbs: false,
-          submit: false
+          lightbulbs: false
         };
 
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -28,31 +27,28 @@ class HomeProds extends React.Component {
     }, () => { console.log(this.state)});
   }
 
-  handleSubmit(event) {
-    console.log("Let's get you some results")
-    fetch("/result", {
+  handleSubmit(event) {    
+    console.log("Let's get you some results");
+    fetch("/results-js", {
     method:"POST",
     cache: "no-cache",
     headers:{
     "content_type":"application/json",
     },
     body:JSON.stringify(this.state.value)
-    }
-    ).then(response => {
-
-    return response.json()
     })
-    .then(json => {
-
-    this.setState({playerName: json[0]})
+    .then(response => {return response.json()
+    })
+    .then(json => {this.setState({product: json})
     })    
 
   }
 
   render(){
     return (
+
       <div> What appliances or housewares are you interested in purchasing?
-            <br />
+      <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
               <input
@@ -124,8 +120,8 @@ class HomeProds extends React.Component {
                 value={this.state.lightbulbs}
                 onChange={this.handleInputChange} />
             </label>
-        <input type="submit" value="Submit" onSubmit= {this.handleSubmit}/>
-        
+        <input type="submit" value="Submit" />
+        </form>
        
       </div>
     );
