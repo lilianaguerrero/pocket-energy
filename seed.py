@@ -119,7 +119,7 @@ def load_products2():
 
     db.session.commit()
 
-def load_prod_img():
+# def load_prod_img():
     
 
             

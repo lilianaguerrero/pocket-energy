@@ -8,7 +8,7 @@ class Homepage extends React.Component {
 
         <p>This application provides custom energy efficiency options, reducing carbon footprint and maximizing return on investment.</p>
         
-        <a href="/Location">
+        <a href="/App">
           Are you interested in saving $$$$ AND saving the planet ?
         </a>
 

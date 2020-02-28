@@ -14,6 +14,7 @@ class Building extends React.Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
+    this.props.handleHousing(name)
 
     this.setState({
       [name]: value
@@ -29,7 +30,7 @@ class Building extends React.Component {
         What best describes your building?
           <br />
             <label>
-            A rental home / apartment 
+            A rental home or apartment 
               <input
                 name="renter"
                 type="radio"
