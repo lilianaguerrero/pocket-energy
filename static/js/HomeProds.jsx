@@ -28,20 +28,16 @@ class HomeProds extends React.Component {
   }
 
   handleSubmit(event) {    
-    console.log("Let's get you some results");
-    fetch("/results-js", {
-    method:"POST",
-    cache: "no-cache",
-    headers:{
-    "content_type":"application/json",
-    },
-    body:JSON.stringify(this.state.value)
-    })
-    .then(response => {return response.json()
-    })
-    .then(json => {this.setState({product: json})
-    })    
+    console.log("Let's get you some results")
+    let washer = this.state.washer;  
+  
 
+    $.post('/results-js', washer, (response) => {
+      let responseObject = JSON.parse(response)
+      let dataReceivedFromResponse = responseObject;
+      this.handleAppState('isFinalStepDone', true);
+      this.handleAppState('dataReceivedFromResponse', dataReceivedFromResponse);
+    })
   }
 
   render(){

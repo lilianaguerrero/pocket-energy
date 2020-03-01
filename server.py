@@ -8,7 +8,7 @@ from model import connect_to_db, db, Measure, SolarIncentive, Product, Program
 
 
 app = Flask(__name__)
-CORS(app)
+
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "SHHHH"
 
@@ -154,7 +154,7 @@ def PocketEnergy():
 def resultsJS():
     product = request.json
     print(product)
-    return render_template("results-JS.html")
+
 
 
 

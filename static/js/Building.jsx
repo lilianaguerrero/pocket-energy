@@ -14,7 +14,9 @@ class Building extends React.Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
-    this.props.handleHousing(name)
+    // this.props.handleHousing(name)
+    this.props.handleAppState('housingType', name)
+
 
     this.setState({
       [name]: value

@@ -4,38 +4,36 @@ class App extends React.Component {
         super();
         this.state = {
             housingType: null,
+            renterType: null,
+            isFinalStepDone: false,
+            dataReceivedFromResponse: {}
         }
     }
-    
-    handleHousing(housingType){
-        this.setState({
-            housingType: housingType
-        })
+
+
+    handleAppState(propertyName, propertyValue) {
+        console.log(propertyName, propertyValue);
+        let currentState = {};
+        currentState[propertyName] = propertyValue;
+        this.setState(currentState);
     }
 
+
     render(){
+        console.log(this.state);
         return( 
            
                 <div>
                 <Loc />
-               <Building handleHousing = {this.handleHousing.bind(this)}/>
+                <Building handleAppState = {this.handleAppState.bind(this)} />
                 {this.state.housingType != 'renter' && <Solar />}
                 {this.state.housingType != 'commercial_property' && <HomeProds />}
-                {this.state.housingType != 'renter' && this.state.housingType != 'homeowner' && <CommProds />} 
-        
+                {this.state.housingType != 'renter' && this.state.housingType != 'homeowner' && <CommProds />}
+                {this.state.isFinalStepDone && <Result propA=this.state.dataReceivedFromResponse />}
                 </div>
         );
     }    
 }
 
-// class Tracking extends React.Component{
-//     constructor(props) {
-//         super(props)
-//         this.state = {location: undefined,
-//                         building_type: undefined,
-//                         solar_type: undefined,
-//                         products: undefined}
-//     }
-// }
 
 ReactDOM.render(<App />, document.getElementById("app"));
