@@ -8,6 +8,7 @@ class App extends React.Component {
             isFinalStepDone: false,
             dataReceivedFromResponse: {}
         }
+        this.handleAppState = this.handleAppState.bind(this)
     }
 
 
@@ -25,10 +26,10 @@ class App extends React.Component {
            
                 <div>
                 <Loc />
-                <Building handleAppState = {this.handleAppState.bind(this)} />
-                {this.state.housingType != 'renter' && <Solar />}
-                {this.state.housingType != 'commercial_property' && <HomeProds />}
-                {this.state.housingType != 'renter' && this.state.housingType != 'homeowner' && <CommProds />}
+                <Building parentCallback = {this.handleAppState} />
+                {this.state.housingType !== 'renter' && <Solar />}
+                {this.state.housingType !== 'commercial_property' && <HomeProds />}
+                {this.state.housingType !== 'renter' && this.state.housingType !== 'homeowner' && <CommProds />}
                 {this.state.isFinalStepDone && <Result propA=this.state.dataReceivedFromResponse />}
                 </div>
         );
