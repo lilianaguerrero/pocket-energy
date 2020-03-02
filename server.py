@@ -152,8 +152,11 @@ def PocketEnergy():
 
 @app.route("/results-js", methods = ['POST'])
 def resultsJS():
-    product = request.json
-    print(product)
+    print("Let's get it poppin")
+    print(request.form.get('washer'))
+    
+    return '!!!!!!!!!!!!!!!!!!!!!!!!'
+    
 
 
 

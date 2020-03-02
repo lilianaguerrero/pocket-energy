@@ -21,20 +21,19 @@ class App extends React.Component {
 
 
     render(){
-        console.log(this.state);
         return( 
-           
                 <div>
                 <Loc />
                 <Building parentCallback = {this.handleAppState} />
                 {this.state.housingType !== 'renter' && <Solar />}
-                {this.state.housingType !== 'commercial_property' && <HomeProds />}
+                {this.state.housingType !== 'commercial_property' && <HomeProds parentCallback = {this.handleAppState} />}
                 {this.state.housingType !== 'renter' && this.state.housingType !== 'homeowner' && <CommProds />}
-                {this.state.isFinalStepDone && <Result propA=this.state.dataReceivedFromResponse />}
+                {this.state.isFinalStepDone && <Result />}
                 </div>
         );
     }    
 }
+                // {this.state.isFinalStepDone && <Result propA=this.state.dataReceivedFromResponse />}
 
 
 ReactDOM.render(<App />, document.getElementById("app"));

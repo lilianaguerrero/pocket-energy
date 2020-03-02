@@ -30,16 +30,15 @@ class HomeProds extends React.Component {
   handleSubmit(event) {    
     console.log("Let's get you some results")
     let washer = this.state.washer;  
-  
-
-    $.post('/results-js', washer, (response) => {
-      let responseObject = JSON.parse(response)
-      let dataReceivedFromResponse = responseObject;
-      this.handleAppState('isFinalStepDone', true);
-      this.handleAppState('dataReceivedFromResponse', dataReceivedFromResponse);
-    })
+    $.post('/results-js', washer, (response) => console.log(response))
+    
   }
-
+// {
+    // // let responseObject = response
+    // // let dataReceivedFromResponse = responseObject;
+    // // this.parentCallback('isFinalStepDone', true);
+    // // this.parentCallback('dataReceivedFromResponse', dataReceivedFromResponse);
+    // })
   render(){
     return (
 
