@@ -1,8 +1,8 @@
-home = furnace = i97v-e8au.json
-home = thermostat = 7p2p-wkbf.json
-comm = washer = 9g6r-cpdt.json  
-comm = dishwasher = 9g6r-cpdt.json 
-comm = boiler = 3393-mxju.json 
-comm = airconditioner = e4mh-a2u3.json 
-comm = thermostat = 7p2p-wkbf.json 
-home = lightbulbs = ebgj-qsf7.json
+home = furnace = i97v-e8au.json = https://bit.ly/2IgqkSZ
+home = thermostat = 7p2p-wkbf.json = https://bit.ly/2TvUmY9
+comm = washer = 9g6r-cpdt.json = https://go.aws/32IGXQV
+comm = dishwasher = 9g6r-cpdt.json = https://bit.ly/38fv4mE
+comm = boiler = 3393-mxju.json = https://bit.ly/32Kb2iL
+comm = airconditioner = e4mh-a2u3.json = https://bit.ly/2PKpHp8
+comm = thermostat = 7p2p-wkbf.json = https://bit.ly/32HIhn4
+home = lightbulbs = ebgj-qsf7.json = https://bit.ly/2IeJd8V

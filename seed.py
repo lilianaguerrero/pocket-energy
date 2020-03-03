@@ -36,7 +36,7 @@ def load_products1():
     for row in file:
         
         row = row.rstrip()
-        product_category, product_type, product_route = row.split(" = ")
+        product_category, product_type, product_route, product_img = row.split(" = ")
 
         url = 'https://data.energystar.gov/resource/' + product_route
             
@@ -63,7 +63,8 @@ def load_products1():
                             product_type = product_type,
                             product_brand = product_brand,
                             product_model = product_model,
-                            product_link = product_link)
+                            product_link = product_link,
+                            product_img = product_img)
 
                 db.session.add(product)
                 db.session.commit()
@@ -82,7 +83,7 @@ def load_products2():
     for row in file:
         
         row = row.rstrip()
-        product_category, product_type, product_route = row.split(" = ")
+        product_category, product_type, product_route, product_img = row.split(" = ")
 
         url = 'https://data.energystar.gov/resource/' + product_route
             
@@ -110,7 +111,8 @@ def load_products2():
                             product_type = product_type,
                             product_brand = product_brand,
                             product_model = product_model,
-                            product_link = product_link)
+                            product_link = product_link,
+                            product_img = product_img)
 
                 db.session.add(product)
                 db.session.commit()
@@ -118,8 +120,6 @@ def load_products2():
             index += 1
 
     db.session.commit()
-
-# def load_prod_img():
     
 
             
