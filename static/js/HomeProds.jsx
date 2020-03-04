@@ -27,10 +27,16 @@ class HomeProds extends React.Component {
     }, () => { console.log(this.state)});
   }
 
-  handleSubmit(event) {    
+  handleSubmit(event) {
+    event.preventDefault();
+
     console.log("Let's get you some results")
-    let washer = this.state.washer;  
-    $.post('/results-js', washer, (response) => console.log(response))
+    let products = {
+      washer: 'something'  
+
+    }
+
+    $.post('/Thinking', products, (response) => this.setState({result: response}))
     
   }
 // {
@@ -40,9 +46,10 @@ class HomeProds extends React.Component {
     // // this.parentCallback('dataReceivedFromResponse', dataReceivedFromResponse);
     // })
   render(){
+    console.log('in home prods', this.props.currentStatus)
     return (
-
-      <div> What appliances or housewares are you interested in purchasing?
+      <div>
+      <div> What appliances or housewares are you interested in purchasing?</div>
       <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
@@ -117,7 +124,8 @@ class HomeProds extends React.Component {
             </label>
         <input type="submit" value="Submit" />
         </form>
-       
+
+      <div>{this.state.result}</div>
       </div>
     );
   }

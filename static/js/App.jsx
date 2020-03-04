@@ -26,9 +26,9 @@ class App extends React.Component {
                 <Loc />
                 <Building parentCallback = {this.handleAppState} />
                 {this.state.housingType !== 'renter' && <Solar />}
-                {this.state.housingType !== 'commercial_property' && <HomeProds parentCallback = {this.handleAppState} />}
-                {this.state.housingType !== 'renter' && this.state.housingType !== 'homeowner' && <CommProds />}
-                {this.state.isFinalStepDone && <Result />}
+                {this.state.housingType !== 'commercial_property' && <HomeProds parentCallback = {this.handleAppState} currentStatus = {this.state}/>}
+                {this.state.housingType !== 'renter' && this.state.housingType !== 'homeowner' && <CommProds currentStatus = {this.state} />}
+                <Result />
                 </div>
         );
     }    

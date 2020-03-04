@@ -150,16 +150,20 @@ def homepageJS():
 def PocketEnergy():
     return render_template("App.html")
 
-@app.route("/results-js", methods = ['POST'])
-def resultsJS():
+@app.route("/Thinking", methods = ['POST'])
+def thinking():
     print("Let's get it poppin")
     print(request.form.get('washer'))
     
     return '!!!!!!!!!!!!!!!!!!!!!!!!'
+
+@app.route("/results-js")
+def results_js():
+    print("Let's get it poppin")
+    print(request.form.get('washer'))
     
-
-
-
+    return jsonify({'!!!!!!!!!!!!!' : '!!!!!!!!!!!'})
+    
 
 
 if __name__ == "__main__":
