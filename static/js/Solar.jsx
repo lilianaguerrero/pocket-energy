@@ -14,6 +14,7 @@ class Solar extends React.Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
+    this.props.parentCallback('solar', name)
 
     this.setState({
       [name]: value

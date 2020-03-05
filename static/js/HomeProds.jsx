@@ -6,7 +6,7 @@ class HomeProds extends React.Component {
           dryer: false,
           dishwasher: false,
           refrigerator: false,
-          fan: false,
+          ceiling_fan: false,
           furnace: false,
           thermostat: false,
           lightbulbs: false
@@ -31,12 +31,22 @@ class HomeProds extends React.Component {
     event.preventDefault();
 
     console.log("Let's get you some results")
-    let products = {
-      washer: 'something'  
-
+    let selections = {
+      washer: this.state.washer,
+      dryer: this.state.dryer,
+      dishwasher: this.state.dishwasher,
+      refrigerator: this.state.refrigerator,
+      ceiling_fan: this.state.ceiling_fan,
+      furnace: this.state.furnace,
+      thermostat: this.state.thermostat,
+      lightbulbs: this.state.lightbulbs,
+      otherComps: this.props.currentStatus 
     }
 
-    $.post('/Thinking', products, (response) => this.setState({result: response}))
+    
+
+
+    $.post('/results-js', selections, (response) => this.setState({result: response}))
     
   }
 // {
@@ -90,9 +100,9 @@ class HomeProds extends React.Component {
             <label>
               Ceiling Fan
               <input
-                name="fan"
+                name="ceiling_fan"
                 type="checkbox"
-                value={this.state.fan}
+                value={this.state.ceiling_fan}
                 onChange={this.handleInputChange} />
             </label>
             <br />

@@ -150,19 +150,69 @@ def homepageJS():
 def PocketEnergy():
     return render_template("App.html")
 
-@app.route("/Thinking", methods = ['POST'])
+@app.route("/results-js", methods = ['POST'])
 def thinking():
     print("Let's get it poppin")
-    print(request.form.get('washer'))
-    
-    return '!!!!!!!!!!!!!!!!!!!!!!!!'
+    """product data is loaded below here"""
+   
 
-@app.route("/results-js")
-def results_js():
-    print("Let's get it poppin")
-    print(request.form.get('washer'))
+    # home_product_list = ['washer', 'dryer', 'dishwasher', 'refrigerator', 'ceiling_fan', 
+    #                 'furnace', 'thermostat', 'lightulbs']
+
+    # comm_product_list = ['washer', 'boiler', 'dishwasher', 'airconditioner', 'thermostat']
+    for key in request.form:
+        print (key)
+
+
+    result_prods = {}
+    for key in request.form:
+        if request.form.get(key) == 'true':
+            result_prods[key] = request.form.get(key)
+    print(result_prods)
+
+    session_prods = []
+    # if request.form.get(housingType) == 'commercial_property':
+        # prod= Product.query.filter_by(product_type=product).filter_by(product_category='comm').first()
+    # else:
+    for product in result_prods.keys():
+        
+        prod= Product.query.filter_by(product_type=product).filter_by(product_category='home').first()
+        session_prods.append(prod)
+    print(session_prods)
+
+    results = []
+    for x in range(0, (len(session_prods))):
+        results.append(session_prods[x].product_img  + ' ' + session_prods[x].product_type + ' ' + session_prods[x].product_brand + ' ' + 
+                session_prods[x].product_model + ' ' + session_prods[x].product_link) 
+    return str(results)
+
+
+    # if housingType == 'renter' or housingType == 'homeowner':
+    #     for product in home_product_list:
+    #         if product in  == 'true':
+
+    #             prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='home').first()
+    #             result_prods.append(prod)
+    #             print(session_prods)
+                
+    # else:
+    #     for product in comm_product_list:
+    #         if product != None:
+    #             session[product] = str(product)
+    #             prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='comm').first()
+    #             session_prods.append(prod)
+    #             print(session_prods)
+
+    # print(session_prods[0].product_link)
     
-    return jsonify({'!!!!!!!!!!!!!' : '!!!!!!!!!!!'})
+    # return(prod)
+
+# @app.route("/results-js")
+# def results_js():
+#     print("Let's get it poppin")
+#     print(request.form.get('washer'))
+    
+#     return jsonify({'!!!!!!!!!!!!!' : '!!!!!!!!!!!'})
     
 
 

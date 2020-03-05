@@ -10,6 +10,7 @@ class CommProds extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -22,9 +23,28 @@ class CommProds extends React.Component {
     }, () => { console.log(this.state)});
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    console.log("Let's get you some results")
+    let selections = {
+      washer: this.state.washer,
+      boiler: this.state.boiler,
+      dishwasher: this.state.dishwasher,
+      airconditioner: this.state.refrigerator,
+      thermostat: this.state.thermostat,
+    }
+
+    $.post('/results-js', selections, (response) => this.setState({result: response}))
+    
+  }
+
+
   render(){
+    console.log('in comm prods', this.props.currentStatus)
     return (
-      <div> What appliances or housewares are you interested in purchasing?
+      <div>
+      <div> What appliances or housewares are you interested in purchasing?</div>
         <form >
           <label>
             Clothes Washer
@@ -70,7 +90,9 @@ class CommProds extends React.Component {
               value={this.state.thermostat}
               onChange={this.handleInputChange} />
           </label>
+          <input type="submit" value="Submit" />
         </form>
+      <div>{this.state.result}</div>
       </div>
     );
   }
