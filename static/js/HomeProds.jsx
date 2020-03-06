@@ -9,7 +9,8 @@ class HomeProds extends React.Component {
           ceiling_fan: false,
           furnace: false,
           thermostat: false,
-          lightbulbs: false
+          lightbulbs: false,
+          submitted: false
         };
 
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -29,6 +30,9 @@ class HomeProds extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({
+      submitted: true
+    })
 
     console.log("Let's get you some results")
     let selections = {
@@ -40,27 +44,22 @@ class HomeProds extends React.Component {
       furnace: this.state.furnace,
       thermostat: this.state.thermostat,
       lightbulbs: this.state.lightbulbs,
-      otherComps: this.props.currentStatus 
+      loc: this.props.currentStatus.loc,
+      housingType: this.props.currentStatus.housingType,
+      solar: this.props.currentStatus.solar
     }
 
-    
+    $.post('/results-js.json', selections, (response) => this.setState({result: response}))
 
-
-    $.post('/results-js', selections, (response) => this.setState({result: response}))
-    
   }
-// {
-    // // let responseObject = response
-    // // let dataReceivedFromResponse = responseObject;
-    // // this.parentCallback('isFinalStepDone', true);
-    // // this.parentCallback('dataReceivedFromResponse', dataReceivedFromResponse);
-    // })
+
   render(){
     console.log('in home prods', this.props.currentStatus)
     return (
       <div>
-      <div> What appliances or housewares are you interested in purchasing?</div>
-      <form onSubmit= {this.handleSubmit}>
+      <div>
+        <div> What appliances or housewares are you interested in purchasing?</div>
+        <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
               <input
@@ -134,10 +133,27 @@ class HomeProds extends React.Component {
             </label>
         <input type="submit" value="Submit" />
         </form>
+        </div>
 
-      <div>{this.state.result}</div>
-      </div>
-    );
+        {this.state.result && this.state.result.products.map((product) => <div key = {product.product_link}> 
+        <div>{product.product_img[0]} </div>
+        <div> {product.product_type[0]} </div>
+        <div> {product.product_brand[0]} </div>
+        <div>{product.product_model[0]} </div>
+        <div> {product.product_link[0]} </div>
+        </div>  )}
+
+        {this.state.result && 
+          <div>
+          {this.state.result.program_link}
+          </div>}
+        {this.state.result && 
+          <div>
+          {this.state.result.solar}
+          </div>}
+    
+      </div> 
+    )
   }
 }
 

@@ -1,6 +1,6 @@
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session, url_for
+from flask import Flask, render_template, request, flash, redirect, session, url_for, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_cors import CORS
 
@@ -150,19 +150,39 @@ def homepageJS():
 def PocketEnergy():
     return render_template("App.html")
 
-@app.route("/results-js", methods = ['POST'])
+@app.route("/results-js.json", methods = ['POST'])
 def thinking():
     print("Let's get it poppin")
-    """product data is loaded below here"""
+    
    
 
-    # home_product_list = ['washer', 'dryer', 'dishwasher', 'refrigerator', 'ceiling_fan', 
-    #                 'furnace', 'thermostat', 'lightulbs']
+    
+    for key in request.form.keys():
+        for value in request.form.getlist(key):
+            print(key, value)
 
-    # comm_product_list = ['washer', 'boiler', 'dishwasher', 'airconditioner', 'thermostat']
-    for key in request.form:
-        print (key)
+    print(request.form.get('loc'))
 
+
+
+
+
+
+    # Location component info loaded below 
+    
+    ccag = Program.query.filter_by(prog_area=request.form.get('loc')).first()
+    if ccag: 
+        ccag = ccag.program_link
+    
+
+
+    # Solar component info handling loaded below
+
+    solary = SolarIncentive.query.filter_by(solar_type=request.form.get('solar')).first()
+    if solary: 
+        solary = solary.rebate_link
+
+    """product data is loaded below here"""
 
     result_prods = {}
     for key in request.form:
@@ -180,11 +200,18 @@ def thinking():
         session_prods.append(prod)
     print(session_prods)
 
-    results = []
+    result = {'program_link': ccag, 'solar': solary}
+    products = []
     for x in range(0, (len(session_prods))):
-        results.append(session_prods[x].product_img  + ' ' + session_prods[x].product_type + ' ' + session_prods[x].product_brand + ' ' + 
-                session_prods[x].product_model + ' ' + session_prods[x].product_link) 
-    return str(results)
+        current_results = {}
+        current_results['product_img'] = session_prods[x].product_img, 
+        current_results['product_type'] = session_prods[x].product_type,
+        current_results['product_brand'] = session_prods[x].product_brand, 
+        current_results['product_model'] = session_prods[x].product_model, 
+        current_results['product_link'] = session_prods[x].product_link 
+        products.append(current_results)
+    result['products'] = products
+    return jsonify(result)
 
 
     # if housingType == 'renter' or housingType == 'homeowner':

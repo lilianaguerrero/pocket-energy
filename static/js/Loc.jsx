@@ -2,7 +2,7 @@ class Loc extends React.Component {
   constructor(props){
         super(props)
         this.state = {
-          Alameda: false,
+          Alameda_County: false,
           Peninsula: false,
           SF: false,
           Sonoma: false,
@@ -36,7 +36,7 @@ class Loc extends React.Component {
   // }
 
   render(){
-    if ( this.state.Alameda || this.state.Peninsula || this.state.SF || this.state.Sonoma || this.state.SV || this.state.SJ || this.state.Other) {
+    if ( this.state.Alameda_County || this.state.Peninsula || this.state.SF || this.state.Sonoma || this.state.SV || this.state.SJ || this.state.Other) {
       return <div></div>
     }
     return (
@@ -45,7 +45,7 @@ class Loc extends React.Component {
             <label>
               Alameda
               <input
-                name="Alameda"
+                name="Alameda_County"
                 type="radio"
                 checked={this.state.Alameda_County}
                 onChange={this.handleInputChange} />

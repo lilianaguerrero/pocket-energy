@@ -35,7 +35,7 @@ class CommProds extends React.Component {
       thermostat: this.state.thermostat,
     }
 
-    $.post('/results-js', selections, (response) => this.setState({result: response}))
+    $.post('/results-js.json', selections, (response) => this.setState({result: response}))
     
   }
 
