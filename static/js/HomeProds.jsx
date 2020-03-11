@@ -81,31 +81,14 @@ class HomeProds extends React.Component {
               <div key={product.product_link}>
               <div  className="carousel-inner">
               <div className="item active">
-                <img src={product.product_img[0]} alt={product.product_type[0]} ></img>
+                <img src={product.product_img[0]}></img>
                 <div className="carousel-caption"> 
                   <h3>Los Angeles</h3>
                   <p>LA is always so much fun!</p>
                 </div>
-              </div> 
-            </div>
-
-            <div>
-            <a className="left carousel-control" href="#myCarousel" data-slide="prev">
-            <div>
-            <span className="glyphicon glyphicon-chevron-left"></span>
-            <span className="sr-only">Previous</span>
-            </div>
-            </a>
-            </div>
-          <div>
-          <a className="right carousel-control" href="#myCarousel" data-slide="next">
-            <div>
-            <span className="glyphicon glyphicon-chevron-right"></span>
-            <span className="sr-only">Next</span>
-            </div>          
-          </a>
-        </div>
-        </div>             
+              </div>
+              </div>
+              </div>             
           )
   })}
 
@@ -113,6 +96,7 @@ class HomeProds extends React.Component {
     console.log('in home prods', this.props.currentStatus)
     if (this.state.submitted) {
       return(        
+        <div>
         <div className="result">
           <div>
               <p>
@@ -124,7 +108,27 @@ class HomeProds extends React.Component {
               </ol>
 
               {this.renderProduct()}
+
+              <div>
+                <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <div>
+                    <span className="glyphicon glyphicon-chevron-left"></span>
+                    <span className="sr-only">Previous</span>
+                  </div>
+                </a>
+                  </div>
+                  <div>
+                <a className="right carousel-control" href="#myCarousel" data-slide="next">
+                  <div>
+                    <span className="glyphicon glyphicon-chevron-right"></span>
+                    <span className="sr-only">Next</span>
+                  </div>          
+                </a>
+              </div>
           </div>
+          </div>
+
+
               {this.state.result && 
                 <div>
                   <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
