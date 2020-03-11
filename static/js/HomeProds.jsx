@@ -68,63 +68,50 @@ class HomeProds extends React.Component {
 
   renderCarouselDots() {
     return this.state.result && this.state.result.products.map((value,index) => {
-                let activeClass = ''
-                return (
-                  <li key={index} data-target="#myCarousel" data-slide-to={index} className={activeClass}></li>
-                )
+      let activeClass = index == 0 ? 'active' : ''
+      return (
+        <li key={index} data-target="#myCarousel" data-slide-to={index} className={activeClass}></li>
+      )
   
   })}
 
   renderProduct(){
-     return this.state.result && this.state.result.products.map((product) => {
+    return this.state.result && this.state.result.products.map((product, index) => {
+            let activeClass = index === 0 ? 'active' : '';
             return ( 
-              <div key={product.product_link}>
-              <div  className="carousel-inner">
-              <div className="item active">
-                <img src={product.product_img[0]}></img>
+              <div key={product.product_link} className={`item ${activeClass}`}>
+                <img src={product.product_img[0]} alt={product.product_type[0]} ></img>
                 <div className="carousel-caption"> 
-                  <h3>Los Angeles</h3>
-                  <p>LA is always so much fun!</p>
-                </div>
-              </div>
+                <strong>{product.product_brand}</strong>
+                  <p>{product.product_model}</p>
               </div>
               </div>             
           )
   })}
 
-
-
-
   render(){
-    console.log('in home prods', this.props.currentStatus)
     if (this.state.submitted) {
       return(        
-        <div>
         <div className="result">
           <div>
               <p>
                 These suggested products are from the EPA Energy Star Program:
               </p>
-              <div id="myCarousel" className="carousel slide" data-ride="carousel">
+              <div className="container">
+              <div id="myCarousel" className="carousel slide">
               <ol className="carousel-indicators">
                 {this.renderCarouselDots()}
               </ol>
+              <div className="carousel-inner" role="listbox">
 
               {this.renderProduct()}
-
-              
-        </div>
-        </div>
-
-        <div>
+              </div>
                 <a className="left carousel-control" href="#myCarousel" data-slide="prev">
                   <div>
                     <span className="glyphicon glyphicon-chevron-left"></span>
                     <span className="sr-only">Previous</span>
                   </div>
                 </a>
-                  </div>
-                  <div>
                 <a className="right carousel-control" href="#myCarousel" data-slide="next">
                   <div>
                     <span className="glyphicon glyphicon-chevron-right"></span>
@@ -142,6 +129,7 @@ class HomeProds extends React.Component {
               }
               {this.solarLinks()}
           </div>
+        </div>
         </div>
       )
     }
