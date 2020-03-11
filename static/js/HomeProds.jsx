@@ -93,22 +93,6 @@ class HomeProds extends React.Component {
   })}
 
 
-    componentDidMount(){
-      return(
-      $("#myCarousel").carousel();
-
-
-      $(".item").click(function(){
-        $("#myCarousel").carousel(1);
-      });
-
-      
-      $(".left").click(function(){
-        $("#myCarousel").carousel("prev");
-      })
-      
-      )
-    }
 
 
   render(){
@@ -128,7 +112,11 @@ class HomeProds extends React.Component {
 
               {this.renderProduct()}
 
-              <div>
+              
+        </div>
+        </div>
+
+        <div>
                 <a className="left carousel-control" href="#myCarousel" data-slide="prev">
                   <div>
                     <span className="glyphicon glyphicon-chevron-left"></span>
@@ -144,9 +132,7 @@ class HomeProds extends React.Component {
                   </div>          
                 </a>
               </div>
-        </div>
-        </div>
-          {this.componentDidMount()}
+          
 
 
               {this.state.result && 
