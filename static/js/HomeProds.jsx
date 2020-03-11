@@ -62,52 +62,83 @@ class HomeProds extends React.Component {
               <br />
               <a href= {this.state.result.solar}> Get Solar Info</a> 
             </div>
-        
       )
     }
   }
 
+  renderCarouselDots() {
+    return this.state.result && this.state.result.products.map((value,index) => {
+                let activeClass = ''
+                return (
+                  <li key={index} data-target="#myCarousel" data-slide-to={index} className={activeClass}></li>
+                )
+  
+  })}
+
+  renderProduct(){
+     return this.state.result && this.state.result.products.map((product) => {
+            return ( 
+              <div key={product.product_link}>
+              <div  className="carousel-inner">
+              <div className="item active">
+                <img src={product.product_img[0]} alt={product.product_type[0]} ></img>
+                <div className="carousel-caption"> 
+                  <h3>Los Angeles</h3>
+                  <p>LA is always so much fun!</p>
+                </div>
+              </div> 
+            </div>
+
+            <div>
+            <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+            <div>
+            <span className="glyphicon glyphicon-chevron-left"></span>
+            <span className="sr-only">Previous</span>
+            </div>
+            </a>
+            </div>
+          <div>
+          <a className="right carousel-control" href="#myCarousel" data-slide="next">
+            <div>
+            <span className="glyphicon glyphicon-chevron-right"></span>
+            <span className="sr-only">Next</span>
+            </div>          
+          </a>
+        </div>
+        </div>             
+          )
+  })}
+
   render(){
     console.log('in home prods', this.props.currentStatus)
     if (this.state.submitted) {
-      return(
+      return(        
         <div className="result">
           <div>
-          <p>
-            These suggested products are from the EPA Energy Star Program:
-          </p>
-          <div id="myCarousel" className="carousel slide" data-ride="carousel">
-          <ol className="carousel-indicators">
+              <p>
+                These suggested products are from the EPA Energy Star Program:
+              </p>
+              <div id="myCarousel" className="carousel slide" data-ride="carousel">
+              <ol className="carousel-indicators">
+                {this.renderCarouselDots()}
+              </ol>
 
-          {this.state.result.products.map((value,index) => {
-                let activeClass = ''
-                <li key={index} data-target="myCarousel" data-slide-to={index} className={activeClass}></li>
-             })}
-
-          {this.state.result && this.state.result.products.map((product) => {
-            return (<div key = {product.product_link} className="carousel-inner">
-            <div className="item active">
-              <img src={product.product_img[0]} alt={product.product_brand[0]}',' {product.product_model[0]}>
-            </div>
-            <li key = {product.product_link} data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            
-          </div>)
-          })}
-
-          {this.state.result && 
-            <div>
-              <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
-            </div>
-          }
-        {this.solarLinks()}
-      </div>
-    
-          
-      </div>)
+              {this.renderProduct()}
+          </div>
+              {this.state.result && 
+                <div>
+                  <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+                </div>
+              }
+              {this.solarLinks()}
+          </div>
+        </div>
+      )
     }
     return (
-        <div className="form"> What appliances or housewares are you interested in purchasing?
+      <div>
+        <div className="form" > 
+        What appliances or housewares are you interested in purchasing?
         <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
@@ -183,8 +214,8 @@ class HomeProds extends React.Component {
         <input type="submit" value="Submit" />
         </form>
         </div>
-    
-      
+        </div>
+        
     )
   }
 }
