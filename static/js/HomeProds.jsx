@@ -92,6 +92,25 @@ class HomeProds extends React.Component {
           )
   })}
 
+
+    componentDidMount(){
+      return(
+      $("#myCarousel").carousel();
+
+
+      $(".item").click(function(){
+        $("#myCarousel").carousel(1);
+      });
+
+      
+      $(".left").click(function(){
+        $("#myCarousel").carousel("prev");
+      })
+      
+      )
+    }
+
+
   render(){
     console.log('in home prods', this.props.currentStatus)
     if (this.state.submitted) {
@@ -125,8 +144,9 @@ class HomeProds extends React.Component {
                   </div>          
                 </a>
               </div>
-          </div>
-          </div>
+        </div>
+        </div>
+          {this.componentDidMount()}
 
 
               {this.state.result && 
