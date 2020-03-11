@@ -15,6 +15,7 @@ class HomeProds extends React.Component {
 
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.solarLinks = this.solarLinks.bind(this)
   }
 
 
@@ -53,12 +54,60 @@ class HomeProds extends React.Component {
 
   }
 
+  solarLinks() {
+    if (this.state.result && this.state.result.solar_pic !== '') {
+      return (
+            <div>
+              <img src= {this.state.result.solar_pic} /> 
+              <br />
+              <a href= {this.state.result.solar}> Get Solar Info</a> 
+            </div>
+        
+      )
+    }
+  }
+
   render(){
     console.log('in home prods', this.props.currentStatus)
+    if (this.state.submitted) {
+      return(
+        <div className="result">
+          <div>
+          <p>
+            These suggested products are from the EPA Energy Star Program:
+          </p>
+          <div id="myCarousel" className="carousel slide" data-ride="carousel">
+          <ol className="carousel-indicators">
+
+          {this.state.result.products.map((value,index) => {
+                let activeClass = ''
+                <li key={index} data-target="myCarousel" data-slide-to={index} className={activeClass}></li>
+             })}
+
+          {this.state.result && this.state.result.products.map((product) => {
+            return (<div key = {product.product_link} className="carousel-inner">
+            <div className="item active">
+              <img src={product.product_img[0]} alt={product.product_brand[0]}',' {product.product_model[0]}>
+            </div>
+            <li key = {product.product_link} data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            
+          </div>)
+          })}
+
+          {this.state.result && 
+            <div>
+              <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+            </div>
+          }
+        {this.solarLinks()}
+      </div>
+    
+          
+      </div>)
+    }
     return (
-      <div>
-      <div>
-        <div> What appliances or housewares are you interested in purchasing?</div>
+        <div className="form"> What appliances or housewares are you interested in purchasing?
         <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
@@ -134,27 +183,9 @@ class HomeProds extends React.Component {
         <input type="submit" value="Submit" />
         </form>
         </div>
-
-        {this.state.result && this.state.result.products.map((product) => <div key = {product.product_link}> 
-        <div>{product.product_img[0]} </div>
-        <div> {product.product_type[0]} </div>
-        <div> {product.product_brand[0]} </div>
-        <div>{product.product_model[0]} </div>
-        <div> {product.product_link[0]} </div>
-        </div>  )}
-
-        {this.state.result && 
-          <div>
-          {this.state.result.program_link}
-          </div>}
-        {this.state.result && 
-          <div>
-          {this.state.result.solar}
-          </div>}
     
-      </div> 
+      
     )
   }
 }
-
 

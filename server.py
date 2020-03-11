@@ -155,16 +155,14 @@ def thinking():
     print("Let's get it poppin")
     
    
-
+    #testing area below
     
     for key in request.form.keys():
         for value in request.form.getlist(key):
             print(key, value)
 
     print(request.form.get('loc'))
-
-
-
+    print(request.form.get('housingType'))
 
 
 
@@ -175,12 +173,17 @@ def thinking():
         ccag = ccag.program_link
     
 
-
     # Solar component info handling loaded below
-
+    print(request.form.get('solar'))
     solary = SolarIncentive.query.filter_by(solar_type=request.form.get('solar')).first()
+    print(solary)
     if solary: 
-        solary = solary.rebate_link
+        sol = solary.rebate_link
+        solar_pic = solary.solar_img
+    else:
+        sol = ''
+        solar_pic = ''
+
 
     """product data is loaded below here"""
 
@@ -190,17 +193,19 @@ def thinking():
             result_prods[key] = request.form.get(key)
     print(result_prods)
 
+
     session_prods = []
-    # if request.form.get(housingType) == 'commercial_property':
-        # prod= Product.query.filter_by(product_type=product).filter_by(product_category='comm').first()
-    # else:
     for product in result_prods.keys():
-        
-        prod= Product.query.filter_by(product_type=product).filter_by(product_category='home').first()
+        if request.form.get('housingType') == 'commercial_property':
+
+            prod= Product.query.filter_by(product_type=product).filter_by(product_category='comm').first()
+        else:
+            prod= Product.query.filter_by(product_type=product).filter_by(product_category='home').first()
         session_prods.append(prod)
     print(session_prods)
 
-    result = {'program_link': ccag, 'solar': solary}
+
+    result = {'program_link': ccag, 'solar': sol, 'solar_pic': solar_pic}
     products = []
     for x in range(0, (len(session_prods))):
         current_results = {}
@@ -213,34 +218,6 @@ def thinking():
     result['products'] = products
     return jsonify(result)
 
-
-    # if housingType == 'renter' or housingType == 'homeowner':
-    #     for product in home_product_list:
-    #         if product in  == 'true':
-
-    #             prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='home').first()
-    #             result_prods.append(prod)
-    #             print(session_prods)
-                
-    # else:
-    #     for product in comm_product_list:
-    #         if product != None:
-    #             session[product] = str(product)
-    #             prod= Product.query.filter_by(product_type=str(product)).filter_by(product_category='comm').first()
-    #             session_prods.append(prod)
-    #             print(session_prods)
-
-    # print(session_prods[0].product_link)
-    
-    # return(prod)
-
-# @app.route("/results-js")
-# def results_js():
-#     print("Let's get it poppin")
-#     print(request.form.get('washer'))
-    
-#     return jsonify({'!!!!!!!!!!!!!' : '!!!!!!!!!!!'})
-    
 
 
 if __name__ == "__main__":

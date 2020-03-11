@@ -6,7 +6,8 @@ class CommProds extends React.Component {
           dishwasher: false,
           boiler: false,
           airconditioner: false,
-          thermostat: false
+          thermostat: false,
+          submitted: false
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,14 +26,20 @@ class CommProds extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({
+      submitted: true
+    })
 
     console.log("Let's get you some results")
     let selections = {
       washer: this.state.washer,
       boiler: this.state.boiler,
       dishwasher: this.state.dishwasher,
-      airconditioner: this.state.refrigerator,
+      airconditioner: this.state.airconditioner,
       thermostat: this.state.thermostat,
+      loc: this.props.currentStatus.loc,
+      housingType: this.props.currentStatus.housingType,
+      solar: this.props.currentStatus.solar
     }
 
     $.post('/results-js.json', selections, (response) => this.setState({result: response}))
@@ -42,10 +49,43 @@ class CommProds extends React.Component {
 
   render(){
     console.log('in comm prods', this.props.currentStatus)
+    if (this.state.submitted) {
+      return(
+        <div className="result">
+        <p>
+            These suggested products are from the EPA Energy Star Program:
+          </p>
+        {this.state.result && this.state.result.products.map((product) => 
+          <div key = {product.product_link}> 
+          <img src= {product.product_img[0]} />
+          <div> {product.product_type[0]} </div>
+          <div> {product.product_brand[0]} </div>
+          <div>{product.product_model[0]} </div>
+          <a href= {product.product_link[0]}> Get Product info</a>
+          </div>  )}
+
+        {this.state.result && 
+          <div>
+            <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+          </div>
+        }
+
+        {this.state.result && 
+          <div>
+            <img src= {this.state.result.solar_pic} /> 
+            <br />
+            <a href= {this.state.result.solar}> Get Solar Info</a> 
+          </div>
+
+        }
+          
+      </div>)
+    }
+
+          
     return (
-      <div>
-      <div> What appliances or housewares are you interested in purchasing?</div>
-        <form >
+      <div className="form"> What appliances or housewares are you interested in purchasing?
+       <form onSubmit= {this.handleSubmit}> 
           <label>
             Clothes Washer
             <input
@@ -92,8 +132,7 @@ class CommProds extends React.Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-      <div>{this.state.result}</div>
-      </div>
+        </div>
     );
   }
 }

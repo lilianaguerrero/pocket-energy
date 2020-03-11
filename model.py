@@ -48,10 +48,13 @@ class SolarIncentive(db.Model):
 
     rebate_link = db.Column(db.String(200),
                             nullable = True)
+
+    solar_img = db.Column(db.String(200),
+                            nullable = True)
     def __repr__(self):
         """respresentation of the info"""
 
-        return f"Solar Type = {self.solar_type}, More Info On Available Rebates= {self.rebate_link}"
+        return f"Solar Type = {self.solar_type}, More Info On Available Rebates= {self.rebate_link}, Solar Image= {self.solar_img}"
 
 
 class Product(db.Model):

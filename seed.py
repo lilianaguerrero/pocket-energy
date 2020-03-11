@@ -16,10 +16,11 @@ def load_solar_incentives():
 
     for row in file:
         row = row.rstrip()
-        solar_type, rebate_link = row.split(' = ')
+        solar_type, rebate_link, solar_img = row.split(' = ')
 
         solar_incentive = SolarIncentive(solar_type = solar_type,
-                                        rebate_link = rebate_link)
+                                        rebate_link = rebate_link,
+                                        solar_img = solar_img)
         db.session.add(solar_incentive)
         db.session.commit()
     db.session.commit()

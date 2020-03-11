@@ -6,10 +6,14 @@ class Homepage extends React.Component {
       <div>
         <img src="/static/images/Pocket-Energy-Logo.png" />
 
-        <p>This application provides custom energy efficiency options, reducing carbon footprint and maximizing return on investment.</p>
+        <p>This application will take you through a series of questions about your building <br />
+        and provide custom energy efficiency options, all selected from expert <br />
+        resources to reduce your carbon footprint and maximize return on investment.</p>
         
+
+        <p>Are you interested in saving cash AND saving the planet ? </p>
         <a href="/App">
-          Are you interested in saving $$$$ AND saving the planet ?
+          Let's Go!!
         </a>
 
       </div>

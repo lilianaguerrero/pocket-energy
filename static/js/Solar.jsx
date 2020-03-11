@@ -26,7 +26,7 @@ class Solar extends React.Component {
       return <div></div>
     }
     return (
-      <div>
+      <div className="form">
         Do you have free roof area? And Do one of the following apply to you?
           <br />
             <label>

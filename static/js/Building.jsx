@@ -14,7 +14,6 @@ class Building extends React.Component {
     const target = event.target;
     const value = target.type === 'radio' ? target.checked : target.value;
     const name = target.name;
-    // this.props.handleHousing(name)
     this.props.parentCallback('housingType', name)
 
 
@@ -28,8 +27,10 @@ class Building extends React.Component {
       return <div></div>
     }
     return (
-      <div>
+      <div className="form">
+      <h1>
         What best describes your building?
+        </h1>
           <br />
             <label>
             A rental home or apartment 

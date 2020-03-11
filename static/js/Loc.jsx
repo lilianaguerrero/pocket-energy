@@ -27,21 +27,15 @@ class Loc extends React.Component {
   }
 
 
-  // componentDidUpdate(prevProps, prevState){
-  //   console.log(this.state)
-  //   console.log('PREV STATE', prevState)
-  //   if (this.state.loc !== '' && prevState.loc === '') {
-  //     this.state.displayQuestion = false
-  //   }
-  // }
-
   render(){
     if ( this.state.Alameda_County || this.state.Peninsula || this.state.SF || this.state.Sonoma || this.state.SV || this.state.SJ || this.state.Other) {
       return <div></div>
     }
     return (
-      <div> Where is your building?
-         <br />
+      <div className="form"> 
+      <h2>
+      Where is your building?
+      </h2>
             <label>
               Alameda
               <input
