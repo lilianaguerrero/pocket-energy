@@ -98,7 +98,7 @@ class HomeProds extends React.Component {
               These suggested products are from the EPA Energy Star Program:
             </p>
             <div className="container">
-              <div id="myCarousel" className="carousel slide" data-ride="carousel">
+              <div id="myCarousel" className="carousel slide">
                  <ol className="carousel-indicators">
                   {this.renderCarouselDots()}
                 </ol>
