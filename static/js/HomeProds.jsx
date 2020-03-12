@@ -58,9 +58,11 @@ class HomeProds extends React.Component {
     if (this.state.result && this.state.result.solar_pic !== '') {
       return (
             <div>
+            <h3>
               <img src= {this.state.result.solar_pic} /> 
               <br />
               <a href= {this.state.result.solar}> Get Solar Info</a> 
+            </h3>
             </div>
       )
     }
@@ -84,6 +86,7 @@ class HomeProds extends React.Component {
                 <div className="carousel-caption"> 
                 <strong>{product.product_brand}</strong>
                   <p>{product.product_model}</p>
+                  <a href= {product.product_link[0]}>Product Info</a>
               </div>
               </div>             
           )
@@ -94,9 +97,9 @@ class HomeProds extends React.Component {
       return(        
         <div className="result">
           <div>
-              <p>
+              <h3>
                 These suggested products are from the EPA Energy Star Program:
-              </p>
+              </h3>
               <div className="container">
               <div id="myCarousel" className="carousel slide">
               <ol className="carousel-indicators">
@@ -124,7 +127,9 @@ class HomeProds extends React.Component {
 
               {this.state.result && 
                 <div>
+                <h3>
                   <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+                </h3>
                 </div>
               }
               {this.solarLinks()}
@@ -136,7 +141,9 @@ class HomeProds extends React.Component {
     return (
       <div>
         <div className="form" > 
+        <h2>
         What appliances or housewares are you interested in purchasing?
+        </h2>
         <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer

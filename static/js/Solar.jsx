@@ -27,7 +27,9 @@ class Solar extends React.Component {
     }
     return (
       <div className="form">
+      <h2>
         Do you have free roof area? And Do one of the following apply to you?
+        </h2>
           <br />
             <label>
             The priority is to save $$ on your water heating & do you use Natural Gas?

@@ -59,6 +59,7 @@ def load_products1():
                 product_brand = top_3_products[0]
                 product_model = top_3_products[1]
                 product_link = top_3_products[2]
+                print(product_link)
 
                 product = Product(product_category = product_category,
                             product_type = product_type,

@@ -28,9 +28,9 @@ class Building extends React.Component {
     }
     return (
       <div className="form">
-      <h1>
+      <h2>
         What best describes your building?
-        </h1>
+        </h2>
           <br />
             <label>
             A rental home or apartment 

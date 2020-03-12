@@ -215,6 +215,7 @@ def thinking():
         current_results['product_model'] = session_prods[x].product_model, 
         current_results['product_link'] = session_prods[x].product_link 
         products.append(current_results)
+        print(current_results['product_link'])
     result['products'] = products
     return jsonify(result)
 

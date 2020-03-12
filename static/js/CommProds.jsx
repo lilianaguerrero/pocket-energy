@@ -12,6 +12,9 @@ class CommProds extends React.Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.solarLinks = this.solarLinks.bind(this);
+        this.renderCarouselDots = this.renderCarouselDots.bind(this);
+        this.renderProduct = this.renderProduct.bind(this)
   }
 
   handleInputChange(event) {
@@ -47,44 +50,93 @@ class CommProds extends React.Component {
   }
 
 
+  solarLinks() {
+    if (this.state.result && this.state.result.solar_pic !== '') {
+      return (
+            <div>
+            <h3>
+              <img src= {this.state.result.solar_pic} /> 
+              <br />
+              <a href= {this.state.result.solar}> Get Solar Info</a> 
+              </h3>
+            </div>
+      )
+    }
+  }
+
+  renderCarouselDots() {
+    return this.state.result && this.state.result.products.map((value,index) => {
+      let activeClass = index == 0 ? 'active' : ''
+      return (
+        <li key={index} data-target="#myCarousel" data-slide-to={index} className={activeClass}></li>
+      )
+  
+  })}
+
+  renderProduct(){
+    return this.state.result && this.state.result.products.map((product, index) => {
+            let activeClass = index === 0 ? 'active' : '';
+            return ( 
+              <div key={product.product_link} className={`item ${activeClass}`}>
+                <img src={product.product_img[0]} alt={product.product_type[0]} ></img>
+                <div className="carousel-caption"> 
+                <strong>{product.product_brand}</strong>
+                  <p>{product.product_model}</p>
+                  <a href= {product.product_link[0]}>Product Info</a>
+              </div>
+              </div>             
+          )
+  })}
+
   render(){
-    console.log('in comm prods', this.props.currentStatus)
     if (this.state.submitted) {
       return(
         <div className="result">
-        <p>
+          <h3>
             These suggested products are from the EPA Energy Star Program:
-          </p>
-        {this.state.result && this.state.result.products.map((product) => 
-          <div key = {product.product_link}> 
-          <img src= {product.product_img[0]} />
-          <div> {product.product_type[0]} </div>
-          <div> {product.product_brand[0]} </div>
-          <div>{product.product_model[0]} </div>
-          <a href= {product.product_link[0]}> Get Product info</a>
-          </div>  )}
+          </h3>
+          <div className="container">
+              <div id="myCarousel" className="carousel slide">
+              <ol className="carousel-indicators">
+                {this.renderCarouselDots()}
+              </ol>
+              <div className="carousel-inner" role="listbox">
 
-        {this.state.result && 
-          <div>
-            <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+              {this.renderProduct()}
+              </div>
+                <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <div>
+                    <span className="glyphicon glyphicon-chevron-left"></span>
+                    <span className="sr-only">Previous</span>
+                  </div>
+                </a>
+                <a className="right carousel-control" href="#myCarousel" data-slide="next">
+                  <div>
+                    <span className="glyphicon glyphicon-chevron-right"></span>
+                    <span className="sr-only">Next</span>
+                  </div>          
+                </a>
+              </div>
+        
+              {this.state.result && 
+                <div>
+                <h3>
+                  <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
+                </h3>
+                </div>
+              }
+              {this.solarLinks()}
           </div>
-        }
-
-        {this.state.result && 
-          <div>
-            <img src= {this.state.result.solar_pic} /> 
-            <br />
-            <a href= {this.state.result.solar}> Get Solar Info</a> 
-          </div>
-
-        }
-          
-      </div>)
+        
+        </div>
+      )
     }
 
-          
     return (
-      <div className="form"> What appliances or housewares are you interested in purchasing?
+      <div className="form"> 
+      <h2>
+      What appliances or housewares are you interested in purchasing?
+      </h2>
        <form onSubmit= {this.handleSubmit}> 
           <label>
             Clothes Washer
