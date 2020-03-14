@@ -59,10 +59,13 @@ class HomeProds extends React.Component {
       return (
             <div>
             <h3>
+              Solar Power may be a good fit for your building: <br/>
+              </h3>
               <img src= {this.state.result.solar_pic} /> 
               <br />
+              <p>
               <a href= {this.state.result.solar}> Get Solar Info</a> 
-            </h3>
+              </p>
             </div>
       )
     }
@@ -82,11 +85,12 @@ class HomeProds extends React.Component {
             let activeClass = index === 0 ? 'active' : '';
             return ( 
               <div key={product.product_link} className={`item ${activeClass}`}>
-                <img src={product.product_img[0]} alt={product.product_type[0]} ></img>
-                <div className="carousel-caption"> 
-                <strong>{product.product_brand}</strong>
+                <img className="carousel-img" src={product.product_img[0]} alt={product.product_type[0]} ></img>
+                <div className="carousel-caption">
+                <strong>{product.product_type} </strong>
+                <p>{product.product_brand}</p>
                   <p>{product.product_model}</p>
-                  <a href= {product.product_link[0]}>Product Info</a>
+                  <p><a href= {product.product_link[0]}>Product Info</a></p>
               </div>
               </div>             
           )
@@ -98,7 +102,7 @@ class HomeProds extends React.Component {
         <div className="result">
           <div>
               <h3>
-                These suggested products are from the EPA Energy Star Program:
+                These products are the most efficient from the EPA EnergyStar Program:
               </h3>
               <div className="container">
               <div id="myCarousel" className="carousel slide">
@@ -128,8 +132,11 @@ class HomeProds extends React.Component {
               {this.state.result && 
                 <div>
                 <h3>
+                  You may be eligible for a clean energy program from your local utility: <br/>
+                  </h3>
+                  <p>
                   <a href= {this.state.result.program_link}> Get Community Choice Aggregate Info</a>
-                </h3>
+                  </p>
                 </div>
               }
               {this.solarLinks()}
