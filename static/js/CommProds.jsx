@@ -85,7 +85,7 @@ class CommProds extends React.Component {
                 <div className="carousel-caption"> 
                 <strong>{product.product_brand}</strong>
                   <p>{product.product_model}</p>
-                  <a href= {product.product_link[0]}>Product Info</a>
+                  <a href= {product.product_link}>Product Info</a>
               </div>
               </div>             
           )

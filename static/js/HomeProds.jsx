@@ -90,7 +90,7 @@ class HomeProds extends React.Component {
                 <strong>{product.product_type} </strong>
                 <p>{product.product_brand}</p>
                   <p>{product.product_model}</p>
-                  <p><a href= {product.product_link[0]}>Product Info</a></p>
+                  <p><a href= {product.product_link}>Product Info</a></p>
               </div>
               </div>             
           )
