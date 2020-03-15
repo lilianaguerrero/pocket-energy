@@ -59,7 +59,7 @@ class HomeProds extends React.Component {
       return (
             <div>
             <h3>
-              Solar Power may be a good fit for your building: <br/>
+              Solar power may be a good fit for your building: 
               </h3>
               <img src= {this.state.result.solar_pic} /> 
               <br />
@@ -103,7 +103,7 @@ class HomeProds extends React.Component {
           <div>
               <h3>
                 These products are the most efficient from the EPA EnergyStar Program:
-              </h3>
+              </h3><br/>
               <div className="container">
               <div id="myCarousel" className="carousel slide">
               <ol className="carousel-indicators">
@@ -126,6 +126,8 @@ class HomeProds extends React.Component {
                   </div>          
                 </a>
               </div>
+              <br/>
+              <br/>
           
 
 
@@ -139,6 +141,7 @@ class HomeProds extends React.Component {
                   </p>
                 </div>
               }
+              <br/>
               {this.solarLinks()}
           </div>
         </div>
@@ -150,7 +153,7 @@ class HomeProds extends React.Component {
         <div className="form" > 
         <h2>
         What appliances or housewares are you interested in purchasing?
-        </h2>
+        </h2><br/>
         <form onSubmit= {this.handleSubmit}>
             <label>
               Clothes Washer
@@ -222,7 +225,7 @@ class HomeProds extends React.Component {
                 type="checkbox"
                 value={this.state.lightbulbs}
                 onChange={this.handleInputChange} />
-            </label>
+            </label><br/>
         <input type="submit" value="Submit" />
         </form>
         </div>

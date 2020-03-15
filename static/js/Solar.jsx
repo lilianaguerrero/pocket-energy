@@ -28,11 +28,11 @@ class Solar extends React.Component {
     return (
       <div className="form">
       <h2>
-        Do you have free roof area? And Do one of the following apply to you?
+        Do you have free roof area and do any of these apply?
         </h2>
           <br />
             <label>
-            The priority is to save $$ on your water heating & do you use Natural Gas?
+            The priority is to save $$ on water heating & you use Natural Gas
               <input
                 name="solar_water_heating"
                 type="radio"
@@ -41,7 +41,7 @@ class Solar extends React.Component {
             </label>
             <br />
             <label>
-              The priority to save $$ on your electricity bill & do you have free roof space?
+              The priority to save $$ on your electric bill
               <input
                 name="solar_panels"
                 type="radio"
@@ -50,7 +50,7 @@ class Solar extends React.Component {
             </label>
             <br />
             <label>
-              You are a multi-family property owner or tenant?
+              You are a multi-family property owner of tenant
               <input
                 name="c_solar_panels"
                 type="radio"

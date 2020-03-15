@@ -1,3 +1,4 @@
+
 div.outer-div {
     padding: 30px;
     text-align: center;
@@ -9,11 +10,12 @@ div.form {
     width: auto;
     height: auto;
 
-	border-radius: 3px;
+	border-radius: 6px;
 	border: 3px solid black;
 
     text-align: left;
     font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
     background-color: #b0ecb0;
 }
 
@@ -23,7 +25,7 @@ div.result{
     width: auto;
     height: auto;
 
-    border-radius: 3px;
+    border-radius: 6px;
     border: 3px solid green;
 
     text-align: left;
@@ -41,26 +43,22 @@ div.result{
     width: 25%;
 } 
 
-
-
 body {
-    font-family: 'Hind Guntur', sans-serif;
-    font-size: 1.6em;
+    font-family: 'Nunito', sans-serif;
+    
 }
+
 
 h3 {
     font-weight:600;
 }
 
 img {
-    width: 200px;
+    width: 400px;
     display: inline-block;
     margin: auto;
     text-align: center;
 }
 
-img.homep {
-    width: 40px;   
-    /*display: inline-block;*/
-}
+
 

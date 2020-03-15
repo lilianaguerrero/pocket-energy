@@ -35,6 +35,7 @@ class Loc extends React.Component {
       <div className="form"> 
       <h2>
       Where is your building?
+      <br/><br/>
       </h2>
             <label>
               Alameda
