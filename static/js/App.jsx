@@ -40,6 +40,8 @@ class App extends React.Component {
                     !== 'homeowner' && <CommProds parentCallback = 
                     {this.handleAppState} currentStatus = {this.state} />}
 
+
+
                 </div>
         );
     }    

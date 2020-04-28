@@ -1,9 +1,17 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session, url_for, jsonify
-from flask_debugtoolbar import DebugToolbarExtension
+
 
 from model import connect_to_db, db, Measure, SolarIncentive, Product, Program
+
+import os
+# Download the helper library from https://www.twilio.com/docs/python/install
+from twilio.rest import Client
+
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
+client = Client(account_sid, auth_token)
 
 
 app = Flask(__name__)
@@ -21,8 +29,20 @@ app.jinja_env.undefined = StrictUndefined
 def homepageJS():
     return render_template("homepage-JS.html")
 
-@app.route("/App")
+@app.route("/App", methods = ['GET','POST'])
 def PocketEnergy():
+
+    client_phone = request.form.get('client_phone')
+
+
+    message = client.messages \
+        .create(
+             body='http://www.pocket-energy.xyz/' ,
+             from_='+12058574483',
+             to= client_phone
+         )
+
+    print(message.sid)
     return render_template("App.html")
 
 @app.route("/results-js.json", methods = ['POST'])
@@ -94,6 +114,9 @@ def thinking():
 
 
 
+
+
+
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
@@ -104,6 +127,6 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
     app.run(host="0.0.0.0")

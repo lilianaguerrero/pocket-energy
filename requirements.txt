@@ -14,5 +14,7 @@ Flask-DebugToolbar==0.10.1
 Flask-SQLAlchemy==2.3.2
 psycopg2-binary==2.7.5
 SQLAlchemy==1.2.8
+twilio~=6.0.0
+
 
 

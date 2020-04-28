@@ -13,6 +13,24 @@ class Homepage extends React.Component {
           Let's Go Green!!
         </a>
         </p>
+        <br/>
+        <br/>
+        <br/>
+        
+        <form action="/App" method="POST">
+        <p>
+        <label>
+        Input your phone # to get a txt message link to our mobile friendly site:
+        
+        <input type="text" name="client_phone" />
+        </label>
+        </p>
+        <p >
+        <input type="submit" value="submit" />
+        </p>
+
+
+        </form>
       </div>
       </div>
 
